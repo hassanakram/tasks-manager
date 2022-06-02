@@ -1,0 +1,24 @@
+.text-xl.font-extrabold.mb-4.text-yellow-900 Tasks Dashboard
+
+.js-search-tasks.mb-5
+  .flex.items-center
+    label Search by: 
+    select.js-search-by-dropdown.search-by-dropdown.p-1.rounded.mr-1.w-36.font-bold
+      option value="title" Title
+      option value="status" Status
+      option value="created_at" Created At
+    select.js-status-dropdown.status-dropdown.hidden.p-1.rounded.w-48 name="query"
+      option value="" disabled="disabled" selected="selected" Select Task Status
+      option value="open" Open
+      option value="work_in_progress" Work In Progress
+      option value="closed" Closed
+    input.js-date-input.date-input.hidden.p-1.rounded name="query" type="date"
+    input.js-query-input.query-input.p-1.rounded name="query" type="text" / 
+    button.js-search-btn.search-btn.mx-1.text-white.bg-pink-800.rounded.p-1 Submit
+  .js-error-msg
+br
+
+.js-tasks-container
+  = render partial: "tasks_table", locals: { tasks: @tasks }
+
+= link_to 'New Task', new_task_path

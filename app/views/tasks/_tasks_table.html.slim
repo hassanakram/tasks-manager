@@ -1,0 +1,23 @@
+table.tasks-table.table-auto.w-full
+  thead
+    tr.border-b-2.border-blue-200.mb-2
+      th Title
+      th Status
+      th User
+      th
+      th
+      th
+
+  tbody
+    - tasks.each do |task|
+      tr.border-b-2.border-blue-200
+        td.text-center.p-1 = task.title
+        td.text-center.p-1.status
+          span.text-white.p-1.rounded class="#{status_class_name(task.status)}" = task.status.humanize
+        td.text-center.p-1 = task.user.email
+        td.text-center.p-1.created-at = task.created_at.strftime("%d/%m/%Y")
+        td.text-center.p-1 = link_to 'Show', task
+        td.text-center.p-1 = link_to 'Edit', edit_task_path(task)
+        td.text-center.p-1 = link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
